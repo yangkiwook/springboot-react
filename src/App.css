@@ -2,33 +2,51 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.title-nav {
-  background-color: black;
+.title-div {
+  background-color: #282c34;
   width: 100%;
   display: flex;
   color: white;
   padding: 20px;
   font-weight: 600;
-  font-size: 30px;
-}
-.container-div {
-  width: 100%;
-  text-align: left;
-  padding: 20px;
   font-size: 20px;
 }
+.container-div {
+  height: 1000px;
+  text-align: left;
+  padding-top: 50px;
+  font-family: "Hannari";
+  border-left: 200px solid #ccc;
+}
+.header-div {
+  width: 1000px;
+  margin-left: 100px;
+  border-bottom: 2px solid #000000;
+  font-weight: bold;
+  font-size: 20px;
+  padding-bottom: 10px;
+  position: relative;
+}
+.login-div{
+  position: absolute;
+  right: 0px;
+  bottom: 165px;
+}
+.menu-p{
+  font-weight: bold;
+  font-size: 30px;
+}
+.search-div {
+  float: right;
+}
 .content-div {
-  width: 500px;
-  margin: 10px;
+  width: 1000px;
+  margin-left: 100px;
+  padding-top: 5px;
 }
 .list-div {
-  border: 2px solid black;
-  padding: 10px;
+  margin-top: 30px;
+  text-align: left;
 }
 .position-div {
   position: relative;
@@ -41,6 +59,58 @@
   left: 350px;
   top: 3px;
 }
+.footer-div {
+  padding: 10px 550px;
+}
+
+/* Form */
+.form-select {
+  border-radius: 0 !important;
+  width: 50% !important;
+}
+.form-control {
+  border-radius: 0 !important;
+  width: 150px !important;
+}
+.btn-group-sm>.btn, .btn-sm {
+  border-radius: 0 !important;
+}
+
+.divTable {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+.divTable .divTableCell, .divTable .divTableHead {
+  border-bottom: 1px solid #bbb;
+  padding: 10px 30px;
+}
+.divTable .divTableBody .divTableCell {
+  font-size: 15px;
+}
+.divTable .divTableHeading .divTableHead {
+  font-size: 15px;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+}
+
+/* DivTable.size */
+.divTable .chk{ width: 5%; }
+.divTable .no{ width: 5%; }
+.divTable .cate{ width: 20%; }
+.divTable .cont{ width: 35%; text-align: left; }
+.divTable .regi{ width: 15%; }
+.divTable .regiD{ width: 15%; }
+.divTable .recom{ width: 5%; }
+
+/* DivTable.com */
+.divTable{ display: table; }
+.divTableRow { display: table-row; }
+.divTableHeading { display: table-header-group;}
+.divTableCell, .divTableHead { display: table-cell;}
+.divTableHeading { display: table-header-group;}
+.divTableBody { display: table-row-group;}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
