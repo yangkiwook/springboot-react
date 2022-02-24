@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.title-div {
+.header-div {
   background-color: #282c34;
   width: 100%;
   display: flex;
@@ -10,27 +10,28 @@
   padding: 20px;
   font-weight: 600;
   font-size: 20px;
+  position: relative;
+}
+.login-div{
+  position: absolute;
+  left: 1210px;
+  bottom: 5px;
 }
 .container-div {
+  width: 1400px;
   height: 1000px;
   text-align: left;
   padding-top: 50px;
   font-family: "Hannari";
   border-left: 200px solid #ccc;
 }
-.header-div {
+.menu-div {
   width: 1000px;
   margin-left: 100px;
   border-bottom: 2px solid #000000;
   font-weight: bold;
   font-size: 20px;
   padding-bottom: 10px;
-  position: relative;
-}
-.login-div{
-  position: absolute;
-  right: 0px;
-  bottom: 165px;
 }
 .menu-p{
   font-weight: bold;
@@ -60,17 +61,16 @@
   top: 3px;
 }
 .footer-div {
-  padding: 10px 550px;
+  width: 123px;
+  margin: 20px auto;
 }
 
 /* Form */
 .form-select {
   border-radius: 0 !important;
-  width: 50% !important;
 }
 .form-control {
   border-radius: 0 !important;
-  width: 150px !important;
 }
 .btn-group-sm>.btn, .btn-sm {
   border-radius: 0 !important;
@@ -96,13 +96,13 @@
 }
 
 /* DivTable.size */
-.divTable .chk{ width: 5%; }
+.divTable .checkbox{ width: 5%; }
 .divTable .no{ width: 5%; }
-.divTable .cate{ width: 20%; }
-.divTable .cont{ width: 35%; text-align: left; }
-.divTable .regi{ width: 15%; }
-.divTable .regiD{ width: 15%; }
-.divTable .recom{ width: 5%; }
+.divTable .category{ width: 20%; }
+.divTable .content{ width: 30%; text-align: left; }
+.divTable .registered{ width: 15%; }
+.divTable .registrationDate{ width: 20%; }
+.divTable .recommend{ width: 5%; }
 
 /* DivTable.com */
 .divTable{ display: table; }
@@ -111,6 +111,27 @@
 .divTableCell, .divTableHead { display: table-cell;}
 .divTableHeading { display: table-header-group;}
 .divTableBody { display: table-row-group;}
+
+.modal-content {
+  font-family: "Hannari";
+}
+.search-div .btn{
+  height: 50%;
+}
+.write-div {
+  width: 400px;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+.write-div .btn-div {
+  text-align: right;
+  padding-top: 30px;
+}
+
+.divTable .onmouseover:hover {
+  background-color:#eee;
+  cursor: pointer;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
