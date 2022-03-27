@@ -11,6 +11,7 @@ export default function Write({ boards, setBoards }) {
   const [ registeredVal, setRegisteredVal ] = useState('');
   const [ registrationDateVal, setRegistrationDateVal ] = useState(formatYmd(new Date()));
   const recommend = 0;
+  const viewflg = 0;
 
   const addBoard = (event) => {
 
@@ -26,7 +27,8 @@ export default function Write({ boards, setBoards }) {
         content : contentVal,
         registered : registeredVal,
         registrationDate : registrationDateVal,
-        recommend : recommend
+        recommend : recommend,
+        viewflg : viewflg
       }
     ])
     
@@ -65,8 +67,8 @@ export default function Write({ boards, setBoards }) {
               <Form.Control type="date" value={ registrationDateVal } onChange={(e) => setRegistrationDateVal(e.target.value)} />
             </Form.Group>
             <div className="btn-div">
-              <Button variant="primary" size="lg" type="submit" >確認</Button>&nbsp;
-              <Button variant="secondary" size="lg" onClick={() => navigate(-1) } >戻る</Button>
+              <Button variant="secondary" size="lg" onClick={() => navigate(-1) } >戻る</Button>&nbsp;
+              <Button variant="primary" size="lg" type="submit" >確認</Button>
             </div>
           </Form>
         </div>

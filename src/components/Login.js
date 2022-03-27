@@ -1,14 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 
 export default function Login() {
-  const [userName, setUserName] = useState('');
-  const [password, setPassword] = useState('');
-  const onSubmit = ( event ) => {
+
+  const [ userName, setUserName ] = useState('');
+  const [ password, setPassword ] = useState('');
+  const [ loginName, setLoginName ] = useState('');
+
+  const [ loginBtn, setLoginBtn ] = useState({ display:'block' });
+  const [ signoutBtn, setSignoutBtn ] = useState({ display:'none' });
+
+  useEffect(() => {
+    if(sessionStorage.length > 0) {
+
+      setLoginName("ようこそ " + sessionStorage.getItem("userName") + "さん");
+      setLoginBtn({ display:'none' });
+      setSignoutBtn({ display:'block' });
+    }else{
+      setLoginName('');
+      setLoginBtn({ display:'block' });
+      setSignoutBtn({ display:'none' });
+    }
+  }, [setLoginName]);
+
+  const signout = () => {
+    sessionStorage.clear();
+    setLoginBtn({ display:'block' });
+    setSignoutBtn({ display:'none' });
+    setLoginName('');
+  }
+
+  const onSubmit = (event) => {
+
     event.preventDefault();
-    console.log( userName, password )
+    sessionStorage.setItem("userName", userName);
+    sessionStorage.setItem("password", password);
+
+    setLoginName("ようこそ " + sessionStorage.getItem("userName") + "さん");
+
     setUserName('');
     setPassword('');
+    setLoginBtn({ display:'none' });
+    setSignoutBtn({ display:'block' });
     handleClose();
   }
 
@@ -19,17 +52,17 @@ export default function Login() {
   return (
     <>
     <div className="header-div">
-      <div>石田チームプロジェクト</div>
+      <div>SPRINGBOOT-REACT</div>
+      <div style={{ position: 'absolute', top: '0px', left: '1200px', fontSize: '15px' }}>{ loginName }</div>
       <div className="login-div">
-      <Button variant="light" onClick={ handleShow }>
-        ログイン
-      </Button>
+        <Button variant="light" onClick={ handleShow } style={ loginBtn }>Sign in</Button>
+        <Button variant="outline-secondary" onClick={ signout } style={ signoutBtn }>signout</Button>
       </div>
     </div>
       <Modal show={ show } onHide={ handleClose } centered>
         <Form onSubmit={ onSubmit }>
           <Modal.Header closeButton>
-            <Modal.Title>ログイン</Modal.Title>
+            <Modal.Title>Sign in</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form.Group className="mb-3" controlId="formBasicText">

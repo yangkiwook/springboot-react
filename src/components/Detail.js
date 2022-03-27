@@ -39,8 +39,8 @@ function Detail({ boards }) {
               <Form.Control type="date" value={ boards[no].registrationDate } disabled />
             </Form.Group>
             <div className="btn-div">
-              <Button variant="primary" size="lg" >編集</Button>&nbsp;
-              <Button variant="secondary" size="lg" onClick={() => navigate(-1) } >閉じる</Button>&nbsp;
+              <Button variant="secondary" size="lg" onClick={() => navigate(-1) } >戻る</Button>&nbsp;
+              <Button variant="primary" size="lg" >編集</Button>
             </div>
           </Form>
         </div>
