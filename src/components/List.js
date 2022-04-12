@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form, Pagination, } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom'
 
 export default function List({ boards, setBoards }) {
@@ -10,10 +10,10 @@ export default function List({ boards, setBoards }) {
   const [ searchSelVal, setSearchSelVal ] = useState('category');
   const [ searchTexVal, setSearchTexVal ] = useState('');
 
-  const viewBoard = (no) => {
+  const viewBoard = (id) => {
     navigate({
       pathname: "/detail",
-      search: `?no=${ no }`
+      search: `?id=${ id }`
     });
   }
 
@@ -76,15 +76,18 @@ export default function List({ boards, setBoards }) {
     setBoards(newArray);
   }
 
+  const deleteBoard = () => {
+
+  }
+
   // eslint-disable-next-line
   const renderDatas = boards.map((board, index) => {
     if(board.viewflg === 0){
-      Object.assign(board, {no: index + 1});
       return (
-        <div className="divTableRow onmouseover" key={ board.no } onClick={() => { viewBoard(board.no) }}>
+        <div className="divTableRow onmouseover" key={ board.id } onClick={() => { viewBoard(board.id) }}>
           <div className="divTableCell" onClick={(e) => { e.stopPropagation() }}>
             <Form.Check type="checkbox" /></div>
-          <div className="divTableCell" >{ board.no }</div>
+          <div className="divTableCell" >{ board.id }</div>
           <div className="divTableCell" >{ board.category }</div>
           <div className="divTableCell content" onClick={() => { viewBoard(board.no) }}>{ board.content }</div>
           <div className="divTableCell" >{ board.registered }</div>
@@ -100,7 +103,7 @@ export default function List({ boards, setBoards }) {
       <div className="menu-div">
         <p className="menu-p">掲示板一覧</p>
         <span>
-          <Button variant="secondary" >削除</Button>&nbsp;
+          <Button variant="secondary" onClick={() => deleteBoard}>削除</Button>&nbsp;
           <Link to="/write">
             <Button variant="success" >作成</Button>
           </Link>
@@ -145,13 +148,13 @@ export default function List({ boards, setBoards }) {
         </div>
       </div>
       <div className="footer-div">
-        <Pagination size="sm">
+        {/* <Pagination size="sm">
           <Pagination.Prev />
           <Pagination.Item>{1}</Pagination.Item>
           <Pagination.Item>{2}</Pagination.Item>
           <Pagination.Item>{3}</Pagination.Item>
           <Pagination.Next />
-        </Pagination>
+        </Pagination> */}
       </div>
     </div>  
   )

@@ -23,6 +23,7 @@ export default function Write({ boards, setBoards }) {
       //掲示板新規追加のデータが掲示板一覧の配列に追加される
       ...boards, 
       {
+        id : boards[boards.length-1].id + 1,
         category : categoryVal,
         content : contentVal,
         registered : registeredVal,
