@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom'
+import Pagination from './Pagination';
 
 export default function List({ boards, setBoards }) {
 
@@ -11,6 +12,9 @@ export default function List({ boards, setBoards }) {
   const [ searchTexVal, setSearchTexVal ] = useState('');
   const [ checkList, setCheckList ] = useState([])
   const [ idList, setIdList ] = useState([])
+  const [ limit, setLimit ] = useState(5);
+  const [ page, setPage ] = useState(1);
+  const offset = (page - 1) * limit;
 
   useEffect(() => {
     let ids = [];
@@ -50,7 +54,7 @@ export default function List({ boards, setBoards }) {
   const registrationDateBtn = () => {
 
     let newArray = [ ...boards ];
-    
+
     if(registrationDateSort === '▲') {
       newArray.sort(function(a, b) { 
         return a.registrationDate > b.registrationDate ? -1 : a.registrationDate < b.registrationDate ? 1 : 0;  // 降順
@@ -62,6 +66,7 @@ export default function List({ boards, setBoards }) {
       });
       setRegistrationDateSort('▲');
     }
+    console.log(newArray);
     setBoards(newArray);
   }
 
@@ -105,7 +110,7 @@ export default function List({ boards, setBoards }) {
  }
   
   // eslint-disable-next-line
-  const renderDatas = boards.map(board => {
+  const renderDatas = boards.slice(offset, offset + limit).map(board => {
     if(board.viewflg === 0){
       return (
         <div className="divTableRow onmouseover" key={ board.id } onClick={() => { viewBoard(board.id) }}>
@@ -172,13 +177,12 @@ export default function List({ boards, setBoards }) {
         </div>
       </div>
       <div className="footer-div">
-        {/* <Pagination size="sm">
-          <Pagination.Prev />
-          <Pagination.Item>{1}</Pagination.Item>
-          <Pagination.Item>{2}</Pagination.Item>
-          <Pagination.Item>{3}</Pagination.Item>
-          <Pagination.Next />
-        </Pagination> */}
+        <Pagination
+          total={boards.length}
+          limit={limit}
+          page={page}
+          setPage={setPage}
+        />
       </div>
     </div>  
   )
