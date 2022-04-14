@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate, useSearchParams  } from 'react-router-dom'
  
@@ -15,9 +15,6 @@ function Detail({ boards, setBoards }) {
   const [ disabled, setDisabled ] = useState(true);
   const [ btnN, setBtnN ] = useState("編集");
 
-  useEffect(()=>{
-    
-  },[])
   const updateBtn = (id) => {
     setDisabled(false);
     setBtnN("確認");
@@ -80,7 +77,7 @@ function Detail({ boards, setBoards }) {
             <div className="btn-div">
               <Button variant="outline-danger" size="lg" style={{ float:'left' }} 
                 onClick={()=> addRecommend(board.id)}>❤ { recommend }</Button>
-              <Button variant="secondary" size="lg" onClick={() => navigate("/") } >戻る</Button>&nbsp;
+              <Button variant="secondary" size="lg" onClick={() => navigate(-1) } >戻る</Button>&nbsp;
               <Button variant="primary" size="lg" onClick={() => updateBtn(board.id) }>{ btnN }</Button>
               
             </div>
